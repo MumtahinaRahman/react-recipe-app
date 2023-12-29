@@ -25,7 +25,7 @@ function Search() {
     }
 
 const FormStyle = styled.form`
-    margin: 2rem 15rem;
+    margin: 0rem 15rem;
 
     div{
         position: relative;

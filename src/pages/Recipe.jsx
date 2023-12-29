@@ -22,8 +22,10 @@ function Recipe() {
   },[params.name]);
   
   return (
+    
     <DetailWrapper>
       <div>
+        {console.log("Extended Ingredients title:", details.title)} {/* Add this line */}
         <h2>{details.title}</h2>
         <img src={details.image} alt="" />
       </div>
@@ -31,19 +33,41 @@ function Recipe() {
         <Button className={activeTab === 'Ingredients' ? 'active' : ''} onClick={() => setActiveTab('Ingredients')}>Ingredients</Button>
         <Button className={activeTab === 'Instructions' ? 'active' : ''} onClick={() => setActiveTab('Instructions')}>Instructions</Button>
         {activeTab === "Instructions" && (
+          
           <div>
+            {console.log("Extended Ingredients:", details.extendedIngredients)} {/* Add this line */}
             {/* <h5 dangerouslySetInnerHTML={{__html: details.summary}}></h5> */}
             <h5 dangerouslySetInnerHTML={{__html: details.instructions}}></h5>
           </div>
         )}
 
-        {activeTab === "Ingredients" && (
-          <ul>
-            {details.extendedIngredients.map((ingredients) => {
-              return(<li key={ingredients.id}>{ingredients.original}</li>)
-            })}
-          </ul>
+        {activeTab === "Ingredients" && ( 
+          // <div>
+          //   {console.log("Extended Ingredients:", details.extendedIngredients)} {/* Add this line */}
+          //   {details.extendedIngredients.map((ingredients) => (
+          //     <li key={ingredients.id}>{ingredients.original}</li>
+          //   ))}
+          // </div>  
+
+          
+            <div>
+              {details.extendedIngredients ? (
+                <ul>
+                  {details.extendedIngredients.map((ingredients) => (
+                    <li key={ingredients.id}>{ingredients.original}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Loading ingredients...</p>
+              )}
+            </div>
+          
+          
+          // <p>lulu
+          //   {console.log("Extended Ingredients:", details.extendedIngredients)} {/* Add this line */}
+          // </p>    
         )}
+
       </Info>
     </DetailWrapper>
   )
@@ -70,11 +94,14 @@ const DetailWrapper = styled.div`
    
   li{
     font-size: 0.8rem;
+    font-weight: 500;
     line-height: 1.5rem;
   }
 
   ul{
     margin-top: 2rem;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
   }
 
   img{

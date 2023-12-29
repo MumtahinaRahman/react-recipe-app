@@ -34,7 +34,7 @@ function Popular() {
         <div>
             <Wrapper>
                 <h1>Popular picks</h1>
-                <Splide options={{perPage:3, arrows:false, pagination:false, drag:'free', gap:'2rem'}}>
+                <Splide options={{perPage:4, arrows:false, pagination:false, drag:'free', gap:'2rem'}}>
                     {popular.map((recipe) => {
                         return(
                             <SplideSlide key={recipe.id}>
@@ -57,17 +57,17 @@ function Popular() {
 }
 
 const Wrapper = styled.div`
-margin: 4rem 0rem;
+margin: 2rem 0rem;
 `;
 
 const Card = styled.div`
-min-height : 25rem;
-border-radius : 2rem;
+min-height : 15rem;
+border-radius : 1rem;
 overflow : hidden;
 position : relative;
 
 img{
-    border-radius : 2rem;
+    border-radius : 1rem;
     position : absolute;
     left : 0;
     width : 100%;
@@ -84,8 +84,8 @@ p{
     color : white;
     width : 100%;
     text-align : center;
-    font-weight : 600;
-    font-size : 1rem;
+    font-weight : 200;
+    font-size : 0.8rem;
     height : 15%;
     display : flex;
     justify-content : center;
