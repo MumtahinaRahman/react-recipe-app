@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Splide, SlideSplide, SplideSlide } from '@splidejs/react-splide';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css/skyblue';
-import { json } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+// import { json } from 'react-router-dom';
 
 function Popular() {
 
@@ -31,15 +33,20 @@ function Popular() {
     return (
         <div>
             <Wrapper>
+                <h1>Popular picks</h1>
                 <Splide options={{perPage:3, arrows:false, pagination:false, drag:'free', gap:'2rem'}}>
                     {popular.map((recipe) => {
                         return(
                             <SplideSlide key={recipe.id}>
+                                <Link to={'/recipe/'+recipe.id}>
                                 <Card key={recipe.id}>
-                                    <p>{recipe.title}</p>
-                                    <img src={recipe.image} alt={recipe.title} />
+                                   
+                                        <p>{recipe.title}</p>
+                                        <img src={recipe.image} alt={recipe.title} />
+                                    
                                     <Gradient />
                                 </Card>
+                                </Link>
                             </SplideSlide>
                         )
                     })}
